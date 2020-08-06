@@ -44,11 +44,6 @@ app.get('/products/:id', (req, res) => {
 })
 
 app.post('/products', (req, res) => {
-    products.forEach(product => {
-        if(product.id === req.body.id){
-            res.send("Id alredy exists, please change id");
-        }
-    })
     products.push(req.body);
     res.send(req.body);
 })
