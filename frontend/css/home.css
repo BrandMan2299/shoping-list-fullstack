@@ -70,6 +70,17 @@ li ion-icon {
 .cart a {
     background-color: royalblue;
     color: #fff;
+    cursor: pointer;
     text-decoration: none;
 }
 
+
+#products {
+    color: black;
+    background-color: red;
+}
+.delete-btn, 
+.like-btn {
+    display: inline-block;
+    Cursor: pointer;
+}
