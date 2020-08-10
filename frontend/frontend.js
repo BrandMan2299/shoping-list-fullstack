@@ -50,7 +50,7 @@ function addProductToHtml(product) {
 
   var likeButton = document.createElement("span");
   likeButton.className = "like-btn";
-  likeButton.innerHTML = ` <ion-icon name="heart-outline"></ion-icon>`;
+  likeButton.innerHTML = `<ion-icon name="heart-outline"></ion-icon>`;
   buttons.appendChild(likeButton);
 
   var productIMG = document.createElement("div");
@@ -84,7 +84,22 @@ function addProductToHtml(product) {
   plusButton.type = "button";
   plusButton.innerHTML = `<ion-icon name="add-circle-outline"></ion-icon>`;
   quantity.appendChild(plusButton);
+
+  likeButton.onclick = () => {
+
+  }
+
+  
 }
+
+
+
+var likeButton = document.createElement("span");
+likeButton.className = "like-btn";
+likeButton.innerHTML = `<ion-icon name="heart-outline"></ion-icon>`;
+buttons.appendChild(likeButton);
+
+
 
 function checkImage(image_url) {
   var http = new XMLHttpRequest();
@@ -94,4 +109,23 @@ function checkImage(image_url) {
 
   console.log(http.status);
   return http.status != 404;
+}
+
+
+const changeIcon = (element) =>{
+
+    if(hovering === true){
+      element.src =`${images.back_default}`;
+    }
+    else{
+      element.src =`${images.front_default}`;
+    }
+  }
+
+
+import { createAnimation } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/esm/index.mjs';
+const animation = createAnimation()
+  .addElement(myElementRef)
+  .duration(1000)
+  .fromTo('opacity', '1', '0.5');
 }
