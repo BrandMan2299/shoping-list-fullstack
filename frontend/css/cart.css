@@ -6,7 +6,7 @@
 }
 
 header {
-    background-image: url('../images/cartBackground.jpg');
+    background-image: url('./images/cartBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
@@ -70,6 +70,19 @@ li ion-icon {
 .cart a {
     background-color: royalblue;
     color: #fff;
+    cursor: pointer;
     text-decoration: none;
+}
+
+
+#products {
+    color: black;
+    background-color: lightgreen;
+}
+
+.delete-btn, 
+.like-btn {
+    display: inline-block;
+    Cursor: pointer;
 }
 

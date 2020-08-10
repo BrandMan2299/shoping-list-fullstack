@@ -1,12 +1,13 @@
+const port = 3333;
+
 //Global Env
-// const products = document.getElementById("products");
+const products = document.getElementById("products");
 
 //defaults
-port = 3000;
 axios.defaults.baseURL = `http://localhost:${port}`;
 axios.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
 axios.defaults.validateStatus = (status) => status >= 200 && status < 300;
-const defaultImgSrc = `images/nophoto.jpg`;
+const defaultImgSrc = `css/images/nophoto.jpg`;
 
 function init() {
   createBag();
@@ -57,7 +58,7 @@ function addProductToHtml(product) {
   productIMG.className = "image";
   newProduct.appendChild(productIMG);
 
-  imgSrc = `images/${product.name}.jpg`;
+  imgSrc = `css/images/${product.name}.jpg`;
   var img = document.createElement("img");
   img.src = checkImage(imgSrc) ? imgSrc : defaultImgSrc;
   img.alt = "";
@@ -66,7 +67,7 @@ function addProductToHtml(product) {
   var quantity = document.createElement("div");
   quantity.className = "quantity";
   newProduct.appendChild(quantity);
-  
+
   var input = document.createElement("input");
   input.type = "text";
   input.name = "name";
@@ -84,48 +85,26 @@ function addProductToHtml(product) {
   plusButton.type = "button";
   plusButton.innerHTML = `<ion-icon name="add-circle-outline"></ion-icon>`;
   quantity.appendChild(plusButton);
-
-  likeButton.onclick = () => {
-
-  }
-
-  
 }
-
-
-
-var likeButton = document.createElement("span");
-likeButton.className = "like-btn";
-likeButton.innerHTML = `<ion-icon name="heart-outline"></ion-icon>`;
-buttons.appendChild(likeButton);
-
-
 
 function checkImage(image_url) {
-  var http = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
+  try{
+    xhr.open("HEAD", image_url, false);
+    xhr.send();
+  
+    console.log(xhr.status);
+    return xhr.status != 404;
+  } catch (e) {
+    console.log(e)
 
-  http.open("HEAD", image_url, false);
-  http.send();
-
-  console.log(http.status);
-  return http.status != 404;
-}
-
-
-const changeIcon = (element) =>{
-
-    if(hovering === true){
-      element.src =`${images.back_default}`;
-    }
-    else{
-      element.src =`${images.front_default}`;
-    }
   }
-
-
-import { createAnimation } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/esm/index.mjs';
-const animation = createAnimation()
-  .addElement(myElementRef)
-  .duration(1000)
-  .fromTo('opacity', '1', '0.5');
 }
+
+// // Link Important https://ionicframework.com/docs/utilities/animations
+// import { createAnimation } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/esm/index.mjs';
+// const animation = createAnimation()
+//   .addElement(myElementRef)
+//   .duration(1000)
+//   .fromTo('opacity', '1', '0.5');
+// }

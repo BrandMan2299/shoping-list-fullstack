@@ -86,11 +86,3 @@ li ion-icon {
     Cursor: pointer;
 }
 
-
-.is-active {
-    animation-name: animate;
-    animation-duration: .8s;
-    animation-iteration-count: 1;
-    animation-timing-function: steps(28);
-    animation-fill-mode: forwards;
-  }
