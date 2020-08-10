@@ -6,7 +6,7 @@
 }
 
 header {
-    background-image: url('../images/cartBackground.jpg');
+    background-image: url('/css/images/cartBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;

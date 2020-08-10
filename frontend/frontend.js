@@ -1,8 +1,10 @@
-const port = 3333;
+const port = 3030;
 
 //Global Env
 const products = document.getElementById("products");
 
+//Local Products
+prod_arr = []
 //defaults
 axios.defaults.baseURL = `http://localhost:${port}`;
 axios.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
@@ -26,66 +28,76 @@ const getList = async () => {
 };
 
 const createBag = async (array) => {
-  console.log("createBage");
   array = await getList();
   array.forEach((product) => {
-    addProductToHtml(product);
+    prod_arr.push(product);
+    console.log(product)
+    var newProd = new Prodcut((product.id,product.name,product.price,product.amount));
+    newProd.addToHtml();
+  
   });
 };
 
-function addProductToHtml(product) {
-  console.log("addProductHTML");
-  let newProduct = document.createElement("div");
-  newProduct.className = "product";
-  products.appendChild(newProduct);
 
-  var buttons = document.createElement("div");
-  buttons.className = "buttons";
-  newProduct.appendChild(buttons);
 
-  //Product Buttons
-  var deleteButton = document.createElement("span");
-  deleteButton.className = "delete-btn";
-  deleteButton.innerHTML = `<ion-icon name="trash-outline"></ion-icon>`;
-  buttons.appendChild(deleteButton);
+console.log("prod_arr", prod_arr)
 
-  var likeButton = document.createElement("span");
-  likeButton.className = "like-btn";
-  likeButton.innerHTML = `<ion-icon name="heart-outline"></ion-icon>`;
-  buttons.appendChild(likeButton);
+// function addProductToHtml(product) {
+//   console.log("addProductHTML");
+//   prod_arr.push(product)
+//   let newProduct = document.createElement("div");
+//   newProduct.className = "product";
+//   products.appendChild(newProduct);
 
-  var productIMG = document.createElement("div");
-  productIMG.className = "image";
-  newProduct.appendChild(productIMG);
+//   var buttons = document.createElement("div");
+//   buttons.className = "buttons";
+//   newProduct.appendChild(buttons);
 
-  imgSrc = `css/images/${product.name}.jpg`;
-  var img = document.createElement("img");
-  img.src = checkImage(imgSrc) ? imgSrc : defaultImgSrc;
-  img.alt = "";
-  productIMG.appendChild(img);
+//   //Product Buttons
+//   var deleteButton = document.createElement("span");
+//   deleteButton.className = "delete-btn";
+//   deleteButton.innerHTML = `<ion-icon name="trash-outline"></ion-icon>`;
+//   buttons.appendChild(deleteButton);
 
-  var quantity = document.createElement("div");
-  quantity.className = "quantity";
-  newProduct.appendChild(quantity);
+//   var likeButton = document.createElement("span");
+//   likeButton.className = "like-btn";
+//   likeButton.innerHTML = `<ion-icon name="heart-outline"></ion-icon>`;
+//   buttons.appendChild(likeButton);
 
-  var input = document.createElement("input");
-  input.type = "text";
-  input.name = "name";
-  input.value = "0";
-  quantity.appendChild(input);
+//   var productIMG = document.createElement("div");
+//   productIMG.className = "image";
+//   newProduct.appendChild(productIMG);
 
-  minusButton = document.createElement("button");
-  minusButton.name = "button";
-  minusButton.type = "button";
-  minusButton.innerHTML = `<ion-icon name="remove-circle-outline"></ion-icon>`;
-  quantity.appendChild(minusButton);
+//   imgSrc = `css/images/${product.name}.jpg`;
+//   var img = document.createElement("img");
+//   img.src = checkImage(imgSrc) ? imgSrc : defaultImgSrc;
+//   img.alt = "";
+//   productIMG.appendChild(img);
 
-  plusButton = document.createElement("button");
-  plusButton.name = "button";
-  plusButton.type = "button";
-  plusButton.innerHTML = `<ion-icon name="add-circle-outline"></ion-icon>`;
-  quantity.appendChild(plusButton);
-}
+//   var quantity = document.createElement("div");
+//   quantity.className = "quantity";
+//   newProduct.appendChild(quantity);
+
+//   var input = document.createElement("input");
+//   input.type = "text";
+//   input.name = "name";
+//   input.value = "0";
+//   quantity.appendChild(input);
+
+//   minusButton = document.createElement("button");
+//   minusButton.name = "button";
+//   minusButton.type = "button";
+//   minusButton.innerHTML = `<ion-icon name="remove-circle-outline"></ion-icon>`;
+//   quantity.appendChild(minusButton);
+
+//   plusButton = document.createElement("button");
+//   plusButton.name = "button";
+//   plusButton.type = "button";
+//   plusButton.innerHTML = `<ion-icon name="add-circle-outline"></ion-icon>`;
+//   quantity.appendChild(plusButton);
+
+
+// }
 
 function checkImage(image_url) {
   var xhr = new XMLHttpRequest();
@@ -100,6 +112,8 @@ function checkImage(image_url) {
 
   }
 }
+
+
 
 // // Link Important https://ionicframework.com/docs/utilities/animations
 // import { createAnimation } from 'https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/esm/index.mjs';
