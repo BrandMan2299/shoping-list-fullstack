@@ -1,69 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA=Compatible" content="ie=edge" />
-      <link rel="stylesheet" href="css/home.css" />
-      <title>Shopping Cart</title>
-    </head>
-    
-    <body onload="init()">
-        <header>
-            <div class="overlay"></div>
-            <nav class="nav">
-                <h2 id="mainHeader">Shopping Bag</h2>
-                <ul>
-                    <li class="home">
-                        <a href="home.html">
-                            <ion-icon name="home-outline"></ion-icon>
-                            Home
-                        </a>
-                    </li>
-                    <li class="about">
-                        <a href="#">
-                            <ion-icon name="information-circle-outline"></ion-icon>
-                            About
-                        </a>
-                    </li>
-                    <li class="cart">
-                        <a href="cart.html">
-                            <ion-icon name="basket"></ion-icon>Cart<span>0</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="css/style.css">
         
-        <div id="products"></div>
-        <div id="addProduct">
-            <div>
-                <label for="id_name">Product Name:</label>
-                <input id="id_name" type="text">
-
-                <label for="id_price">Price:</label>
-                <input id="id_price" type="text">
-                <label for="id_amount">Amount:</label>
-                <input id="id_amount" type="text">
-                <button id="add_btn">Add Product</button>
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1>Shopping list</h1>
+            <h2>Enter your product:</h2>
+            <div class="row align-items-center">
+                
+                <div class="col-12 align-items-center">
+                    <label>Name:</label>
+                    <input id="id_name" type="text">
+                    <label>Price:</label>
+                    <input id="id_price" type="text">
+                    <label>Amount:</label>
+                    <input id="id_amount" type="text">
+                    <button class="btn btn-primary" id="add_btn">add prod</button>
+                </div>
+            </div>
+            <div class="mt-4 row justify-content-center" id="id_parent">
+                <!-- <div class="col-5 border border-grey mx-2">
+                    <h2>Bread</h2>
+                    <div>Price: 5 nis</div>
+                    <div>Amount: 10 items</div>
+                    
+                -->
+                
+                
             </div>
         </div>
-        <div id="id_parent">
-            <!-- <div class="col-5 border border-grey mx-2">
-                <h2>Bread</h2>
-                <div>Price: 5 nis</div>
-                <div>Amount: 10 items</div>
-                
-             -->
-
-            
-        </div>
-        
         <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
-        <script type="text/javascript" src="./node_modules/axios/dist/axios.min.js"></script>
-        <script src="frontend.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="product.js"></script>
+        <script src="script.js"></script>
     </body>
-    </html>
-    
+</html>

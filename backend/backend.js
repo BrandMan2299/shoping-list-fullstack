@@ -2,38 +2,38 @@ let products = [
   {
     id: "0",
     name: "milk",
-    price: "10",
+    price: 10,
     amount: 0,
   },
   {
     id: "1",
     name: "cerial",
-    price: "23",
+    price: 23,
     amount: 0,
   },
   {
     id: "2",
     name: "watermellon",
-    price: "29",
+    price: 29,
     amount: 0,
   },
   {
     id: "3",
     name: "cola",
-    price: "12",
+    price: 12,
     amount: 0,
   },
   {
     id: "4",
     name: "bread",
-    price: "8",
+    price: 8,
     amount: 0,
   },
 ];
 
 const express = require("express");
 const app = express();
-const { port } = require("./galModules");
+const { port } = require("./port");
 var path = require("path");
 app.use(express.json());
 
@@ -42,6 +42,8 @@ app.get("/", (req, res) => {
   res.sendFile("home.html", { root: path.join(__dirname, "../frontend") });
   // res.sendFile(`./../frontend/home.html`);
 });
+
+
 
 app.get("/products", (req, res) => {
   res.send(products);
