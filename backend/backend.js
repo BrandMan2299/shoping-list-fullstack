@@ -74,8 +74,10 @@ app.put("/products/:id", (req, res) => {
 
 app.delete("/products/:id", (req, res) => {
   products.forEach((product, index) => {
-    if (product.id === req.body) {
+    if (product.id == req.params.id) {
+      console.log("Equal")
       products.splice(index, 1);
+      console.log("Product", req.body);
       res.send("Product deleted");
     }
   });

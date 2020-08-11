@@ -11,6 +11,8 @@ const id_amount = document.getElementById("id_amount");
 NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
+
+
 var products = [];
 var deletedProducts = [];
 
