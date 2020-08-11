@@ -37,6 +37,10 @@ Product.prototype.addToHtml = function () {
   productPriceDiv.className = "productPriceDiv";
   productPriceDiv.innerHTML = `Total Price: <span class="productTotalPrice">${this.price * this.amount}</span> NIS`;
 
+
+  var editLabel = document.createElement("label")
+  editLabel.className = ""
+
   var buttons = document.createElement("div");
   buttons.className = "buttons";
 
@@ -69,7 +73,7 @@ Product.prototype.addToHtml = function () {
   editButton.name = "button";
   editButton.type = "button";
   editButton.className ="edit-button";
-  editButton.innerHTML = `Edit${editIcon}`;
+  editButton.innerHTML = `Edit`;
 
   editButton.onclick = () => {
     editButton.edit(input, name)
@@ -90,6 +94,7 @@ Product.prototype.addToHtml = function () {
   newBox.appendChild(productIMG);
   newBox.appendChild(quantity);
   newBox.appendChild(productPriceDiv);
+  newBox.appendChild(editLabel);
   newBox.appendChild(buttons);
 
   this.parent.appendChild(newBox);

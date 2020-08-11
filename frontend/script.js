@@ -20,7 +20,7 @@ NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
 var products = [];
-
+var discount = []
 var deletedProducts = [];
 
 const getList = async () => {
@@ -145,19 +145,6 @@ function addBTNEvent(box) {
     console.log("Prod Amount", quantityNum)
   }
   
-  // minusBTN.onclick = () => {
-  //   var quantityNum = parseInt(prodAmount.value, 10);
-  //   var prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
-
-  //   var productTotalPriceVal = productTotalPrice.innerHTML;
-  //   quantityNum -= 1;
-  //   prodAmount.value = quantityNum;
-
-  //   productTotalPrice.innerHTML = prodPriceVal * quantityNum;
-  //   console.log("prodAmount Value", prodAmount.value);
-  //   console.log("FullPrice", productTotalPriceVal);
-  // };
-
   deleteBTN.onclick = () => {
     console.log(products);
     var productId;
@@ -179,8 +166,9 @@ function addBTNEvent(box) {
     // deleteProduct()
   };
   editBTN.onclick = () => {
-    prod = products.filter((product) => product.name == productName.innerText);
-    editProduct(prod);
+    product = products.filter((product) => product.name == productName.innerText);
+    var prodOBJ = editBTN.parentNode.parentNode;
+    editProduct(prodOBJ, product);
 
   }
 }
@@ -192,9 +180,31 @@ const deleteProduct = async (productId) => {
 };
 
 
-const editProduct = async (product) => {
-  console.log(product);
+const editProduct = async (prodOBJ, product) => {
+  console.log("Editing Task")
+  console.log("ProdOBJ", prodOBJ)
+  console.log("Product", product);
+  let containsClass = prodOBJ.classList.contains("editMode");
+  console.log(containsClass)
+  debugger
+
+  if (containsClass){
+    prodOBJ.classList.remove("editMode")
+    debugger
+
+
+    // productPrice.innerHTML = `Price: <span class="productTitlePrice">${this.price}</span> NIS`;
+    // productPriceDiv.child(productTotalPrice)
+
+  } else {
+    prodOBJ.classList.add("editMode")
+    debugger
+  }
+
+
 }
+
+
 //   await axios.put(`/products/${productId}`).then((r) => r.data);
 //   console.log("Deleted");
 // };
