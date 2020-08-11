@@ -1,7 +1,9 @@
 port = 3030;
+
 axios.defaults.baseURL = `http://localhost:${port}`;
 axios.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
 axios.defaults.validateStatus = (status) => status >= 200 && status < 300;
+
 const defaultImgSrc = `css/images/nophoto.jpg`;
 const add_btn = document.getElementById("add_btn");
 const id_name = document.getElementById("id_name");
@@ -10,8 +12,6 @@ const id_amount = document.getElementById("id_amount");
 
 NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
-
-
 
 var products = [];
 var deletedProducts = [];
@@ -98,6 +98,7 @@ function addBTNEvent (box) {
   var productTitlePrice = prodPrice.querySelector('.productTitlePrice')
   var productPriceDiv = box.querySelector('.productPriceDiv')
   var productTotalPrice = productPriceDiv.querySelector('.productTotalPrice')
+  var productName = box.querySelector('.productHeader')
 
 
 
@@ -117,4 +118,44 @@ function addBTNEvent (box) {
 
   }
 
+  minusBTN.onclick = () => {
+    var quantityNum = parseInt(prodAmount.value, 10);
+    var prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
+    
+    var productTotalPriceVal = productTotalPrice.innerHTML
+    quantityNum -= 1
+    prodAmount.value = quantityNum
+    
+    
+
+    productTotalPrice.innerHTML = prodPriceVal * quantityNum
+    console.log("prodAmount Value", prodAmount.value)
+    console.log("FullPrice", productTotalPriceVal)
+
+  }
+
+  deleteBTN.onclick =  () => {
+    console.log(products)
+    var productId
+    products.forEach( async (product) => {
+      if (product.name == productName.innerText) {
+        console.log(product.name, "IS Equal", productName.innerText)
+        productId = product.id;
+      }
+      
+    })
+    deleteProduct(productId);
+    window.location.reload()
+
+    // deleteProduct()
+
+  }
+
 }
+
+const deleteProduct = async (productId) => {
+  console.log(productId);
+  await axios.delete(`/products/${productId}`).then((r) => r.data);
+  console.log("Deleted");
+
+};

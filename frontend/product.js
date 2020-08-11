@@ -82,6 +82,8 @@ Product.prototype.addToHtml = function () {
   this.parent.appendChild(newBox);
 };
 
+
+
 function checkImage(image_url) {
   var xhr = new XMLHttpRequest();
   try {
@@ -91,7 +93,7 @@ function checkImage(image_url) {
     console.log(xhr.status);
     return xhr.status != 404;
   } catch (e) {
-    console.log(e);
+    console.log("Image Error", e);
   }
 }
 

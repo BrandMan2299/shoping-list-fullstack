@@ -77,8 +77,9 @@ app.delete("/products/:id", (req, res) => {
     if (product.id == req.params.id) {
       console.log("Equal")
       products.splice(index, 1);
-      console.log("Product", req.body);
+      console.log("Product", req.params.id);
       res.send("Product deleted");
+      
     }
   });
 });
