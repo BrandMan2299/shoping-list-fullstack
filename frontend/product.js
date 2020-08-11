@@ -4,7 +4,7 @@ const deleteIcon = `<ion-icon name="trash-outline"></ion-icon>`
 const likeIcon = `<ion-icon name="heart-outline"></ion-icon>`
 const minusIcon = `<ion-icon name="remove-circle-outline"></ion-icon>`
 const plusIcon = `<ion-icon name="add-circle-outline"></ion-icon>`
-
+const editIcon = `<i class="fal fa-edit"></i>`
 
 function Product(_id, _name, _price, _amount, _parent) {
   this.id = _id;
@@ -63,6 +63,16 @@ Product.prototype.addToHtml = function () {
   plusButton.className ="plus-button";
   plusButton.innerHTML = `${plusIcon}`;
   
+
+  
+
+  var editButton = document.createElement("button");
+  editButton.name = "button";
+  editButton.type = "button";
+  editButton.className ="edit-button";
+  editButton.innerHTML = `Edit Button: ${editIcon}`;
+
+  buttons.appendChild(editButton);
   buttons.appendChild(deleteButton);
   buttons.appendChild(likeButton);
   buttons.appendChild(minusButton);

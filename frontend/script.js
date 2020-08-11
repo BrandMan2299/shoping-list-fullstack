@@ -88,9 +88,11 @@ function addBTNEvent (box) {
   var minusBTN = buttonsElement.querySelector('.minus-button')
   
   var plusBTN = buttonsElement.querySelector('.plus-button')
+  var editBTN = buttonsElement.querySelector('.edit-button')
 
 
   var deleteBTN = buttonsElement.querySelector('.delete-btn')
+
 
   var likeBTN = buttonsElement.querySelector('.like-btn')
   var prodAmount = box.querySelector('.amountInput');
@@ -137,21 +139,28 @@ function addBTNEvent (box) {
   deleteBTN.onclick =  () => {
     console.log(products)
     var productId
-    products.forEach( async (product) => {
-      if (product.name == productName.innerText) {
-        console.log(product.name, "IS Equal", productName.innerText)
-        productId = product.id;
-      }
+    prod = products.filter(product => product.name == productName.innerText);
+    console.log(prod)
+    productId = prod[0].id
+    console.log(prod[0].id)
+    // products.forEach( async (product) => {
+    //   if (product.name == productName.innerText) {
+    //     console.log(product.name, "IS Equal", productName.innerText)
+    //     productId = product.id;
+    //   }
       
-    })
+    // })
+
     deleteProduct(productId);
     window.location.reload()
-
+console.log(a)
     // deleteProduct()
 
   }
-
 }
+
+
+
 
 const deleteProduct = async (productId) => {
   console.log(productId);
@@ -159,3 +168,13 @@ const deleteProduct = async (productId) => {
   console.log("Deleted");
 
 };
+
+
+// app.put("/products/:id", (req, res) => {
+//   products.forEach((product, index) => {
+//     if (product.id === req.params.id) {
+//       products.splice(index, 1, req.body);
+//       res.send(req.body);
+//     }
+//   });
+// });
