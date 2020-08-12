@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/style.css">
+
+        
+        
+    </head>
+    <body onLoad="init()">
+        <div class="container">
+            <h1>Shopping list</h1>
+            <h2>Enter your product:</h2>
+            <div class="row align-items-center">
+                
+                <div class="col-12 align-items-center">
+                    <label>Name:</label>
+                    <input id="id_name" type="text" placeholder="Product Name">
+                    <label>Price:</label>
+                    <input id="id_price" type="text" placeholder="Product Price">
+                    <label>Amount:</label>
+                    <input id="id_amount" type="text" placeholder="Product Quantity">
+                    <button class="btn btn-primary" id="add_btn">add prod</button>
+                </div>
+            </div>
+            <div class="mt-4 row justify-content-center" id="id_parent">
+                <!-- <div class="col-5 border border-grey mx-2">
+                    <h2>Bread</h2>
+                    <div>Price: 5 nis</div>
+                    <div>Amount: 10 items</div>
+                    
+                -->
+                
+                
+            </div>
+        </div>
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="product.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
