@@ -1,0 +1,25 @@
+//The Port is Specified in Port.js
+// Need To Add Import Port
+port = 3030;
+
+
+// Defining Axios Defaults
+axios.defaults.baseURL = `http://localhost:${port}`;
+axios.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
+axios.defaults.validateStatus = (status) => status >= 200 && status < 300;
+
+
+//Global Scope Variables
+const defaultImgSrc = `css/images/nophoto.jpg`;
+const add_btn = document.getElementById("add_btn");
+const id_name = document.getElementById("id_name");
+const id_price = document.getElementById("id_price");
+const id_amount = document.getElementById("id_amount");
+
+
+// Adding This Allows To use HTML Collection or Node List as an Array
+NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+
+var products = [];
+
