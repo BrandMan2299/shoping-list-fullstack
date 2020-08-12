@@ -74,27 +74,34 @@ const pushProduct = async (product) => {
   init();
 };
 
-
-// Function To Add Events To Buttons Ob the Product 
+// Function To Add Events To Buttons Ob the Product
 function addBTNEvent(box) {
-    console.log("Product Box", box);
-    var buttonsElement = box.querySelector(".buttons");
-  
-    var minusBTN = buttonsElement.querySelector(".minus-button");
-  
-    var plusBTN = buttonsElement.querySelector(".plus-button");
-    var editBTN = buttonsElement.querySelector(".edit-button");
-  
-    var deleteBTN = buttonsElement.querySelector(".delete-btn");
-  
-    var likeBTN = buttonsElement.querySelector(".like-btn");
-    var prodAmount = box.querySelector(".amountInput");
-    var prodPrice = box.querySelector(".productPrice");
-    var productTitlePrice = prodPrice.querySelector(".productTitlePrice");
-    var productPriceDiv = box.querySelector(".productPriceDiv");
-    var productTotalPrice = productPriceDiv.querySelector(".productTotalPrice");
-    var productName = box.querySelector(".productHeader");
-    if (!prodAmount.value) {
-        prodAmount.value = 0;
-      }
-    }
+  console.log("Product Box", box);
+  var buttonsElement = box.querySelector(".buttons");
+
+  var minusBTN = buttonsElement.querySelector(".minus-button");
+
+  var plusBTN = buttonsElement.querySelector(".plus-button");
+  var editBTN = buttonsElement.querySelector(".edit-button");
+
+  var deleteBTN = buttonsElement.querySelector(".delete-btn");
+
+  var likeBTN = buttonsElement.querySelector(".like-btn");
+  var prodAmount = box.querySelector(".amountInput");
+  var prodPrice = box.querySelector(".productPrice");
+  var productTitlePrice = prodPrice.querySelector(".productTitlePrice");
+  var productPriceDiv = box.querySelector(".productPriceDiv");
+  var productTotalPrice = productPriceDiv.querySelector(".productTotalPrice");
+  var productName = box.querySelector(".productHeader");
+  if (!prodAmount.value) {
+    prodAmount.value = 0;
+  }
+}
+
+//Event Listener On Changing The Amount of Product Using The Input
+prodAmount.addEventListener("input", () => {
+  let quantityNum = parseInt(prodAmount.value, 10);
+  let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
+  let total = prodPriceVal * quantityNum;
+  productTotalPrice.innerHTML = total ? total : 0;
+});
