@@ -105,3 +105,15 @@ prodAmount.addEventListener("input", () => {
   let total = prodPriceVal * quantityNum;
   productTotalPrice.innerHTML = total ? total : 0;
 });
+
+//Event Listener On Plus Button To Add 1 Product
+plusBTN.onclick = () => {
+    var quantityNum = parseInt(prodAmount.value, 10);
+    let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
+
+    quantityNum += 1;
+    prodAmount.value = quantityNum;
+    let total = prodPriceVal * quantityNum;
+    productTotalPrice.innerHTML = total ? total : 0;
+    console.log("Prod Amount", quantityNum);
+  };
