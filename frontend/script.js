@@ -73,3 +73,28 @@ const pushProduct = async (product) => {
   await axios.post("/product", product).then((r) => r.data);
   init();
 };
+
+
+// Function To Add Events To Buttons Ob the Product 
+function addBTNEvent(box) {
+    console.log("Product Box", box);
+    var buttonsElement = box.querySelector(".buttons");
+  
+    var minusBTN = buttonsElement.querySelector(".minus-button");
+  
+    var plusBTN = buttonsElement.querySelector(".plus-button");
+    var editBTN = buttonsElement.querySelector(".edit-button");
+  
+    var deleteBTN = buttonsElement.querySelector(".delete-btn");
+  
+    var likeBTN = buttonsElement.querySelector(".like-btn");
+    var prodAmount = box.querySelector(".amountInput");
+    var prodPrice = box.querySelector(".productPrice");
+    var productTitlePrice = prodPrice.querySelector(".productTitlePrice");
+    var productPriceDiv = box.querySelector(".productPriceDiv");
+    var productTotalPrice = productPriceDiv.querySelector(".productTotalPrice");
+    var productName = box.querySelector(".productHeader");
+    if (!prodAmount.value) {
+        prodAmount.value = 0;
+      }
+    }
