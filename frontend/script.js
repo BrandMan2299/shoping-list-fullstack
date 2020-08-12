@@ -39,6 +39,7 @@ const init = () => {
 
 // Function To Show The Products On The HTML Page
 const showProd = async () => {
+  console.log("Show Prod");
   prod_ar = await getList();
   products = prod_ar;
   id_parent.innerHTML = "";
@@ -57,6 +58,7 @@ const showProd = async () => {
 
 //Function To Generate Random ID That's not existing on The Product List
 const generateID = () => {
+    console.log("Generating ID .....")
   let prodId = Math.floor(Math.random() * 1000);
   products.map((product) => {
     if (product.id === prodId) {
@@ -76,7 +78,6 @@ const pushProduct = async (product) => {
 
 // Function To Add Events To Buttons Ob the Product
 function addBTNEvent(box) {
-  console.log("Product Box", box);
   var buttonsElement = box.querySelector(".buttons");
 
   var minusBTN = buttonsElement.querySelector(".minus-button");
@@ -128,5 +129,22 @@ minusBTN.onclick = () => {
   prodAmount.value = quantityNum > 0 ? quantityNum : 0;
   let total = prodPriceVal * quantityNum;
   productTotalPrice.innerHTML = total > 0 ? total : 0;
-  console.log("Prod Amount", quantityNum);
 };
+
+//Event Listener On Delete Button To Delete 1 Product  from the  Products List and HTML
+deleteBTN.onclick = () => {
+  var productId;
+  prod = products.filter((product) => product.name == productName.innerText);
+  productId = prod[0].id;
+
+  deleteProduct(productId);
+  init(); // Load All Page Func Again
+};
+
+// Delete Product From Server
+const deleteProduct = async (productId) => {
+    console.log(productId);
+    await axios.delete(`/products/${productId}`).then((r) => r.data);
+    console.log("Deleted");
+  };
+  
