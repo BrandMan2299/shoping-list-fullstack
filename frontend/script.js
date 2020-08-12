@@ -33,11 +33,9 @@ const getList = async () => {
   }
 };
 
-
-
 const init = () => {
-    showProd();
-}
+  showProd();
+};
 
 // Function To Show The Products On The HTML Page
 const showProd = async () => {
@@ -57,14 +55,21 @@ const showProd = async () => {
   });
 };
 
-
 //Function To Generate Random ID That's not existing on The Product List
 const generateID = () => {
-    let prodId = Math.floor(Math.random() * 1000);
-    products.map((product) => {
-      if (product.id === prodId) {
-        prodId = generateID();
-      }
-    });
-    return prodId.toString();
-  };
+  let prodId = Math.floor(Math.random() * 1000);
+  products.map((product) => {
+    if (product.id === prodId) {
+      prodId = generateID();
+    }
+  });
+  return prodId.toString();
+};
+
+// Adding Function To Push Product in to Product List
+const pushProduct = async (product) => {
+  console.log(product);
+  console.log("Pushed");
+  await axios.post("/product", product).then((r) => r.data);
+  init();
+};
