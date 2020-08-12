@@ -65,14 +65,15 @@ let products = [
     res.send(req.body);
   });
 
-app.put('/products/:id', (req, res) => {
-    products.forEach((product ,index) => {
-        if(product.id === req.params.id){
-            products.splice(index, 1, req.body);
-            res.send(req.body);
-        }
+  app.put("/products/:id", (req, res) => {
+    products.forEach((product, index) => {
+      if (product.id === req.params.id) {
+        products.splice(index, 1, req.body);
+        console.log("New Product", req.body, "Old Product", product);
+        res.send(req.body);
+      }
     });
-})
+  });
 
 app.delete('/products/:id', (req, res) => {
     products.forEach((product ,index) => {
