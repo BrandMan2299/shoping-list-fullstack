@@ -75,14 +75,17 @@ let products = [
     });
   });
 
-app.delete('/products/:id', (req, res) => {
-    products.forEach((product ,index) => {
-        if(product.id === req.params.id){
-            products.splice(index, 1);
-            res.send('Product deleted')
-        }
+  app.delete("/products/:id", (req, res) => {
+    products.forEach((product, index) => {
+      if (product.id == req.params.id) {
+
+        products.splice(index, 1);
+        console.log("Product", req.params.id, "Deleted");
+        res.send(`Product ${req.params.id} deleted`);
+        
+      }
     });
-})
+  });
 
 app.listen(port, () => {
     console.log(`Server Is Listening On Port ${port}`);
