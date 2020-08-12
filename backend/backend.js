@@ -37,6 +37,15 @@ let products = [
     },
   ];
 
+
+
+  app.get("/", (req, res) => {
+    app.use("/", express.static(path.join(__dirname, "../frontend")));
+    res.sendFile("home.html", { root: path.join(__dirname, "../frontend") });
+    // res.sendFile(`./../frontend/home.html`);
+  });
+  
+
 app.get('/products', (req, res) => {
     res.send(products);
 })
