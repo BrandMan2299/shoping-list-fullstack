@@ -56,3 +56,15 @@ const showProd = async () => {
     newProd.addToHtml();
   });
 };
+
+
+//Function To Generate Random ID That's not existing on The Product List
+const generateID = () => {
+    let prodId = Math.floor(Math.random() * 1000);
+    products.map((product) => {
+      if (product.id === prodId) {
+        prodId = generateID();
+      }
+    });
+    return prodId.toString();
+  };
