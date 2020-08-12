@@ -20,7 +20,7 @@ NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
 var products = [];
-var discount = []
+var discount = [];
 var deletedProducts = [];
 
 const getList = async () => {
@@ -52,11 +52,8 @@ const init = () => {
       amount: id_amount.value,
     };
     pushProduct(obj);
-    console.log("add to storage?")
+    console.log("add to storage?");
     // AddToStorage(obj)
-    
-
-
   };
 };
 
@@ -113,14 +110,15 @@ function addBTNEvent(box) {
   var productTotalPrice = productPriceDiv.querySelector(".productTotalPrice");
   var productName = box.querySelector(".productHeader");
 
-  if (!prodAmount.value) {prodAmount.value = 0};
+  if (!prodAmount.value) {
+    prodAmount.value = 0;
+  }
 
-  prodAmount.addEventListener('input', () => {
+  prodAmount.addEventListener("input", () => {
     let quantityNum = parseInt(prodAmount.value, 10);
     let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
-    let total = prodPriceVal * quantityNum
-    productTotalPrice.innerHTML = total ? total:0;
-
+    let total = prodPriceVal * quantityNum;
+    productTotalPrice.innerHTML = total ? total : 0;
   });
 
   plusBTN.onclick = () => {
@@ -129,22 +127,22 @@ function addBTNEvent(box) {
 
     quantityNum += 1;
     prodAmount.value = quantityNum;
-    let total = prodPriceVal * quantityNum
-    productTotalPrice.innerHTML = total ? total:0;
-    console.log("Prod Amount", quantityNum)
-  }
+    let total = prodPriceVal * quantityNum;
+    productTotalPrice.innerHTML = total ? total : 0;
+    console.log("Prod Amount", quantityNum);
+  };
   minusBTN.onclick = () => {
     var quantityNum = parseInt(prodAmount.value, 10);
     let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
-    
+
     quantityNum -= 1;
-    quantityNum = (quantityNum > 0) ? quantityNum:0;
-    prodAmount.value = (quantityNum > 0) ? quantityNum:0;
-    let total = prodPriceVal * quantityNum
-    productTotalPrice.innerHTML = (total > 0) ? total:0;
-    console.log("Prod Amount", quantityNum)
-  }
-  
+    quantityNum = quantityNum > 0 ? quantityNum : 0;
+    prodAmount.value = quantityNum > 0 ? quantityNum : 0;
+    let total = prodPriceVal * quantityNum;
+    productTotalPrice.innerHTML = total > 0 ? total : 0;
+    console.log("Prod Amount", quantityNum);
+  };
+
   deleteBTN.onclick = () => {
     console.log(products);
     var productId;
@@ -166,11 +164,12 @@ function addBTNEvent(box) {
     // deleteProduct()
   };
   editBTN.onclick = () => {
-    product = products.filter((product) => product.name == productName.innerText);
+    product = products.filter(
+      (product) => product.name == productName.innerText
+    );
     var prodOBJ = editBTN.parentNode.parentNode;
     editProduct(prodOBJ, product);
-
-  }
+  };
 }
 
 const deleteProduct = async (productId) => {
@@ -180,73 +179,66 @@ const deleteProduct = async (productId) => {
 };
 
 
+
+
+
+
 const editProduct = async (prodOBJ, product) => {
-  console.log("Editing Task")
-  console.log("ProdOBJ", prodOBJ)
+  console.log("Editing Task");
+  console.log("ProdOBJ", prodOBJ);
   console.log("Product", product);
-  let containsClass = prodOBJ.classList.contains("editMode");
-  console.log(containsClass)
-  debugger
+  name = prompt("Choose New Product Name")
+  price = prompt("Choose New product Price") 
+  amount = prompt("Choose New Product Amount")
 
-  if (containsClass){
-    prodOBJ.classList.remove("editMode")
-    debugger
-
-
-    // productPrice.innerHTML = `Price: <span class="productTitlePrice">${this.price}</span> NIS`;
-    // productPriceDiv.child(productTotalPrice)
-
-  } else {
-    prodOBJ.classList.add("editMode")
-    debugger
-  }
+  console.log(product[0].name)
+  var name = (name.length > 2) ? name:product[0].name
+  var price = (price > 0) ? price:product[0].price
+  var amount = (amount > 0) ? amount:product[0].amount
+  console.log(name, price ,amount)
+  console.log(parent)
+  var editProduct = new Product (product[0].id, name, price, amount, id_parent)
+  await axios.put(`/products/${product[0].id}`, editProduct).then((r) => r.data);
+  init();
+  
 
 }
 
+// const editProduct = async (prodOBJ, product) => {
+//   console.log("Editing Task");
+//   console.log("ProdOBJ", prodOBJ);
+//   console.log("Product", product);
+//   let containsClass = prodOBJ.classList.contains("editMode");
+//   console.log(containsClass);
+//   debugger;
 
-//   await axios.put(`/products/${productId}`).then((r) => r.data);
-//   console.log("Deleted");
-// };
+//   if (!containsClass) {
+//     prodOBJ.classList.add("editMode");
 
-// Put From Backend
-// app.put("/products/:id", (req, res) => {
-//   products.forEach((product, index) => {
-//     if (product.id === req.params.id) {
-//       products.splice(index, 1, req.body);
-//       res.send(req.body);
+
+//     event.target.innerHTML = "Save";
+//     name = prompt("Choose New Product Name")
+//     price = prompt("Choose New product Price")
+//     amount = prompt("Choose New Product Amount")
+//     editedProduct = {
+//       id: product.id,
+//       name: (name > 2) ? name:product.name,
+//       price: (price > 0) ? price:product.price,
+//       amount: (amount > 0) ? amount:0
+//     };    
+//     if (editProduct.name < 2) {
+//       alert("Name Must Be 2 Characters min");
 //     }
-//   });
-// });
+//       // window.location.reload();
+//   } else if(event.target.innerHTML == "Save") {
 
-// //Add To Local Storage
-// const AddToStorage = (product) =>{
-//   var target = "productsStorage"
-//   let local = localStorage.getItem(product);
-//   if (local == null) {
-//     local = ""
-//   }
-//   local += product
-//   localStorage.setItem(target, local);
-// }
-// //Get From Local Storage
-// const getStorage = () => {
-//   console.log("getStorage");
-//   var productsStorage = localStorage.getItem("productsStorage");
-//   if (!productsStorage) {
-//     setStorage(products);
-//   }
-//   return productsStorage;
-// };
-// const setStorage = (products) => {
-//   //Set From Local Storage
-//   console.log("setStorage");
-//   var productsString = JSON.stringify(products);
-//   localStorage.setItem("productsStorage", productsString);
-// };
-
-
-
-
-
-
-
+//     prodOBJ.classList.remove("editMode");
+//     event.target.type = "submit";
+//     event.target.onclick = async () => {
+//       vent.target.innerHTML == "Edit"
+//       await axios.put(`/products/${product.id}`, editProduct).then((r) => r.data);
+//       init();
+//       // window.location.reload();
+//     }
+    
+//   }};
