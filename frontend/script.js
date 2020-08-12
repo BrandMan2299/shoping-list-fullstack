@@ -34,6 +34,11 @@ const getList = async () => {
 };
 
 
+
+const init = () => {
+    showProd();
+}
+
 // Function To Show The Products On The HTML Page
 const showProd = async () => {
   prod_ar = await getList();
