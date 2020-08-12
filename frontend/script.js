@@ -106,14 +106,27 @@ prodAmount.addEventListener("input", () => {
   productTotalPrice.innerHTML = total ? total : 0;
 });
 
-//Event Listener On Plus Button To Add 1 Product
+//Event Listener On Plus Button To Add 1 Product  to amount and update the total price
 plusBTN.onclick = () => {
-    var quantityNum = parseInt(prodAmount.value, 10);
-    let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
+  var quantityNum = parseInt(prodAmount.value, 10);
+  let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
 
-    quantityNum += 1;
-    prodAmount.value = quantityNum;
-    let total = prodPriceVal * quantityNum;
-    productTotalPrice.innerHTML = total ? total : 0;
-    console.log("Prod Amount", quantityNum);
-  };
+  quantityNum += 1;
+  prodAmount.value = quantityNum;
+  let total = prodPriceVal * quantityNum;
+  productTotalPrice.innerHTML = total ? total : 0;
+  console.log("Prod Amount", quantityNum);
+};
+
+//Event Listener On Minus Button To decrease 1 Product  from the  amount and update the total price
+minusBTN.onclick = () => {
+  var quantityNum = parseInt(prodAmount.value, 10);
+  let prodPriceVal = parseInt(productTitlePrice.innerHTML, 10);
+
+  quantityNum -= 1;
+  quantityNum = quantityNum > 0 ? quantityNum : 0;
+  prodAmount.value = quantityNum > 0 ? quantityNum : 0;
+  let total = prodPriceVal * quantityNum;
+  productTotalPrice.innerHTML = total > 0 ? total : 0;
+  console.log("Prod Amount", quantityNum);
+};
