@@ -23,3 +23,16 @@ HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
 var products = [];
 
+
+// Function To Get The Product List From The Server
+const getList = async () => {
+    console.log("getList");
+    try {
+      const { data } = await axios.get(`/products`);
+      console.log("Products Data", data);
+      return data;
+    } catch (e) {
+      console.log("Error Getting Products");
+      console.log(e);
+    }
+  };
