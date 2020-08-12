@@ -1,35 +1,39 @@
-const express = require('express');
+const express = require("express'");
 const app = express();
 const { port } = require("./port");
 app.use(express.json());
-
 let products = [
     {
-        id:'0',
-        name: 'milk',
-        price: '10'
+      id: "0",
+      name: "milk",
+      price: 10,
+      amount: 0,
     },
     {
-        id:'1',
-        name: 'cerial',
-        price: '23'
+      id: "1",
+      name: "cerial",
+      price: 23,
+      amount: 0,
     },
     {
-        id:'2',
-        name: 'watermellon',
-        price: '29'
+      id: "2",
+      name: "watermellon",
+      price: 29,
+      amount: 0,
     },
     {
-        id:'3',
-        name: 'cola',
-        price: '12'
+      id: "3",
+      name: "cola",
+      price: 12,
+      amount: 0,
     },
     {
-        id:'4',
-        name: 'bread',
-        price: '8'
-    }
-];
+      id: "4",
+      name: "bread",
+      price: 8,
+      amount: 0,
+    },
+  ];
 
 app.get('/products', (req, res) => {
     res.send(products);
