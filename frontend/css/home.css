@@ -1,13 +1,13 @@
 * {
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
 header {
     background-image: url('/css/images/cartBackground.jpg');
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-position: center;
     height: 200px;
     position: relative;

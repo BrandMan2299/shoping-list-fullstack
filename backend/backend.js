@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
 const { port } = require("./port");
+const cors = require('cors');
+
 var path = require("path");
 app.use(express.json());
+
+
 
 let products = [
   {
@@ -44,12 +48,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
   res.send(products);
 });
 
 app.get("/products/:id", (req, res) => {
   for (const product of products) {
     if (product.id === req.params.id) {
+      res.header('Access-Control-Allow-Origin', '*')
       res.send(product);
     }
   }
@@ -58,6 +64,8 @@ app.get("/products/:id", (req, res) => {
 app.post("/product", (req, res) => {
   products.push(req.body);
   console.log("Product", req.body);
+  res.header('Access-Control-Allow-Origin', '*')
+
   res.send(req.body);
 });
 
@@ -66,6 +74,7 @@ app.put("/products/:id", (req, res) => {
     if (product.id === req.params.id) {
       products.splice(index, 1, req.body);
       console.log("New Product", req.body, "Old Product", product);
+      res.header('Access-Control-Allow-Origin', '*')
       res.send(req.body);
     }
   });
@@ -76,6 +85,7 @@ app.delete("/products/:id", (req, res) => {
     if (product.id == req.params.id) {
       products.splice(index, 1);
       console.log("Product", req.params.id, "Deleted");
+      res.header('Access-Control-Allow-Origin', '*')
       res.send(`Product ${req.params.id} deleted`);
     }
   });
