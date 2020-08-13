@@ -5,6 +5,7 @@ port = 3030;
 // Defining Axios Defaults
 axios.defaults.baseURL = `http://localhost:${port}`;
 axios.defaults.headers.post["Content-Type"] = "application/json; charset=utf-8";
+// axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 axios.defaults.validateStatus = (status) => status >= 200 && status < 300;
 
 //Global Scope Variables
