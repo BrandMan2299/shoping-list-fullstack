@@ -34,7 +34,24 @@ const getList = async () => {
 };
 
 const init = () => {
-  showProd();
+  showProd().then(() => {
+    var id_parent = document.getElementById("id_parent");
+    var boxes = id_parent.getElementsByClassName("productBox"); // HTML Collection
+    Array.from(boxes).forEach((box) => {
+      addBTNEvent(box);
+    });
+  });
+  add_btn.onclick = () => {
+    var obj = {
+      name: id_name.value,
+      id: generateID(),
+      price: id_price.value,
+      amount: id_amount.value,
+    };
+    pushProduct(obj);
+    console.log("add to storage?");
+    // AddToStorage(obj)
+  };
 };
 
 // Function To Show The Products On The HTML Page

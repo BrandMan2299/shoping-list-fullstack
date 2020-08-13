@@ -97,10 +97,10 @@ Product.prototype.addToHtml = function () {
 
 
 // If The Image is not existing Use Default Image (NO Image Photo)
-function checkImage(image_url) {
+async function checkImage(image_url) {
   var xhr = new XMLHttpRequest();
   try {
-    xhr.open("HEAD", image_url, false);
+    await xhr.open("HEAD", image_url, true);
     xhr.send();
 
     console.log(xhr.status);
