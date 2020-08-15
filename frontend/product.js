@@ -25,7 +25,7 @@ Product.prototype.addToHtml = function () {
   productPrice.className = "productPrice";
   productPrice.innerHTML = `Price: <span class="productTitlePrice">${this.price}</span> NIS`;
 
-  var imgSrc = `css/images/${this.name}.jpg`;
+  var imgSrc = `/frontend/css/images/${this.name}.jpg`;
   imgSrc = checkImage(imgSrc) ? imgSrc : defaultImgSrc;
   var productIMG = document.createElement("div");
   productIMG.className = "image";

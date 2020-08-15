@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +7,7 @@
 }
 
 header {
-    background-image: url('/css/images/cartBackground.jpg');
+    background-image: url('/frontend/css/images/cartBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
