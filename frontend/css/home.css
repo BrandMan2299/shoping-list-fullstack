@@ -1,7 +1,5 @@
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
@@ -81,8 +79,8 @@ li ion-icon {
     background-color: lightblue;
 }
 
-.delete-btn, 
-.like-btn {
+button
+{
     display: inline-block;
     Cursor: pointer;
 }
