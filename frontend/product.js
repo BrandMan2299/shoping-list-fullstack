@@ -4,7 +4,6 @@ const likeIcon = `<ion-icon name="heart-outline"></ion-icon>`;
 const minusIcon = `<ion-icon name="remove-circle-outline"></ion-icon>`;
 const plusIcon = `<ion-icon name="add-circle-outline"></ion-icon>`;
 const editIcon = `<i class="fal fa-edit"></i>`;
-
 // Product Object Creation
 function Product(_id, _name, _price, _amount, _parent) {
   this.id = _id;
@@ -25,7 +24,7 @@ Product.prototype.addToHtml = function () {
   productPrice.className = "productPrice";
   productPrice.innerHTML = `Price: <span class="productTitlePrice">${this.price}</span> NIS`;
 
-  var imgSrc = `css/images/${this.name}.jpg`;
+  var imgSrc = `/frontend/css/images/${this.name}.jpg`;
   imgSrc = checkImage(imgSrc) ? imgSrc : defaultImgSrc;
   var productIMG = document.createElement("div");
   productIMG.className = "image";

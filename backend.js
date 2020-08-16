@@ -3,7 +3,7 @@ const app = express();
 const { port } = require("./port");
 var path = require("path");
 app.use(express.json());
-
+app.use(express.static(__dirname));
 let products = [
   {
     id: "0",
@@ -38,9 +38,11 @@ let products = [
 ];
 
 app.get("/", (req, res) => {
-  app.use("/", express.static(path.join(__dirname, "../frontend")));
-  res.sendFile("home.html", { root: path.join(__dirname, "../frontend") });
-  // res.sendFile(`./../frontend/home.html`);
+  res.sendFile("home.html", { root: path.join(__dirname, "/frontend") });
+});
+
+app.get("/style.css", (req, res) => {
+  res.sendFile("home.css", { root: path.join(__dirname, "/frontend/css") });
 });
 
 app.get("/products", (req, res) => {

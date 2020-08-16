@@ -1,12 +1,11 @@
+
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
 header {
-    background-image: url('/css/images/cartBackground.jpg');
+    background-image: url('/frontend/css/images/cartBackground.jpg');
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
@@ -80,8 +79,8 @@ li ion-icon {
     background-color: lightblue;
 }
 
-.delete-btn, 
-.like-btn {
+button
+{
     display: inline-block;
     Cursor: pointer;
 }
