@@ -46,6 +46,7 @@ app.get("/", (req, res) => {
 
 
 app.get("/products", (req, res) => {
+  console.log(req.query.SearchText)
   res.send(products);
 });
 
@@ -80,7 +81,7 @@ app.delete("/products/:id", (req, res) => {
       products.splice(index, 1);
       console.log("Product", req.params.id, "Deleted");
       res.send(`Product ${req.params.id} deleted`);
-      
+
     }
   });
 });
